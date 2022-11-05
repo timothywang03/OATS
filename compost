@@ -8,18 +8,49 @@ def appStarted(app):
     app.currentPage = "homepage"
 
 
-
 def redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, 1440,777, fill = "#3A7B48")
     if app.currentPage == "homepage":
         drawHomepage(app, canvas)
+    elif app.currentPage == 'about':
+        drawAbout(app, canvas)
+    elif app.currentPage == 'learn':
+        drawLearn(app, canvas)
+    elif app.currentPage == 'start':
+        drawStart(app, canvas)
+
     
 def drawHomepage(app, canvas):
     canvas.create_text(182, 306, text = "title", 
     font = "Arial 112 bold", fill = "white")
 
+def drawAbout(app, canvas):
+    canvas.create_text(182, 30, text = "about", 
+    font = "Arial 66 bold", fill = "white")
+
+def drawLearn(app, canvas):
+    canvas.create_text(182, 30, text = "learn", 
+    font = "Arial 66 bold", fill = "white")
+
+def drawStart(app, canvas):
+    canvas.create_text(182, 30, text = "start", 
+    font = "Arial 66 bold", fill = "white")
+
 def mousePressed(app, event):
     x, y = event.x, event.y
+    if app.currentPage == 'homepage':
+        if (182 <= x <= 310) and (484 <= y <= 538):
+            app.currentPage = 'about'
+        elif (182 <= x <= 830) and (538 <= y <= 590):
+            app.currentPage = 'learn'
+        elif (182 <= x <= 378) and (592 <= y <= 650):
+            app.currentPage = 'start'
+    elif app.currentPage == 'about':
+        pass
+    elif app.currentPage == 'learn':
+        pass
+    elif app.currentPage == 'start':
+        pass
 
 def display():
     width = 1440
