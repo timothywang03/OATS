@@ -2,275 +2,32 @@ import math, copy, random
 
 from cmu_112_graphics import *
 
-def gameDimensions():
-    # These values are set to the writeup defaults
-    rows = 15
-    cols = 10
-    cellSize = 20
-    margin = 25
-    return (rows, cols, cellSize, margin)
-
 def appStarted(app):
-    app.rows, app.cols, app.cellsize, app.margin = gameDimensions()
-    # create board
-    app.board = []
-    for i in range(app.rows):
-        row = []
-        for i in range(app.cols):
-            row.append("pink")
-        app.board.append(row)
-    # pieces 
-    sPiece = [
-        [False, True, True],
-        [True, True, False]]        
-    iPiece = [
-        [True, True, True, True]]
-    jPiece = [
-        [True, False, False],
-        [True, True, True]]
-    lPiece = [
-        [False, False, True],
-        [True, True, True]]
-    oPiece = [
-        [True, True],
-        [True, True]]
-    tPiece = [
-        [False, True, False],
-        [True, True, True]]
-    zPiece = [
-        [True, True, False],
-        [False, True, True]]
-    app.tetrisPieces = [iPiece, jPiece, lPiece, oPiece, sPiece, tPiece, zPiece]
-    app.tetrisPieceColors = ["red", "light yellow", "magenta", 
-    "yellow", "light blue", "light green", "orange"]
-    newFallingPiece(app)
-    app.isGameOver = False
-    app.score = 0
-    app.spacebar = False
+    pages = {"homepage", "about", "learnMore", "webcam", "recycle", 
+    "compost", "landfill"}
+    app.currentPage = "homepage"
 
-def keyPressed(app, event):
-    if event.key == "Up":
-        if fallingPieceIsLegal(app, 0, 0) == False:
-            app.IsGameOver = True
-        rotateFallingPiece(app)
-    elif event.key == "Down":
-        if fallingPieceIsLegal(app, 0, 0) == False:
-            app.IsGameOver = True
-        drow, dcol = 1, 0
-        moveFallingPiece(app, drow, dcol)
-    elif event.key == "Left":
-        if fallingPieceIsLegal(app, 0, 0) == False:
-            app.IsGameOver = True
-        drow, dcol = 0, -1
-        moveFallingPiece(app, drow, dcol)
-    elif event.key == "Right":
-        if fallingPieceIsLegal(app, 0, 0) == False:
-            app.IsGameOver = True
-        drow, dcol = 0, 1
-        moveFallingPiece(app, drow, dcol)
-    elif event.key == 'r': # restart
-        appStarted(app)
-    elif event.key == 'Space':
-        app.spacebar = True
 
-def hardDrop(app):
-    drow = 15
-    dcol = 0
-    oldRowPosition = app.fallingPieceRow
-    while app.fallingPieceRow == oldRowPosition:
-        moveFallingPiece(app, drow, dcol) 
-        # keep trying moveFallingPiece until drow is within range
-        drow -= 1
-    placeFallingPiece(app)
-
-def timerFired(app):
-    if app.spacebar == False:
-        if moveFallingPiece(app, 1, 0) != False and app.isGameOver == False:
-            placeFallingPiece(app)
-            newFallingPiece(app)
-        if moveFallingPiece(app, 0, 0) != False:
-            app.isGameOver = True
-    else: 
-        hardDrop(app)
-        app.spacebar = False
-        if fallingPieceIsLegal(app, 0, 0) != False:
-            app.IsGameOver = True
-
-def placeFallingPiece(app): # step 6
-    for rowI in range(len(app.fallingPiece)):
-        for colI in range(len(app.fallingPiece[0])): 
-            if app.fallingPiece[rowI][colI] == True:
-                boardRow = app.fallingPieceRow + rowI
-                boardCol = app.fallingPieceCol + colI
-                app.board[boardRow][boardCol] = app.fallingPieceColor
-    removeFullRows(app)
 
 def redrawAll(app, canvas):
-    canvas.create_rectangle(0, 0, app.width, app.height, fill = "light yellow")
-    drawBoard(app, canvas)
-    drawFallingPiece(app, canvas)
-    drawScore(app, canvas)
-    if app.isGameOver == True:
-        cx = int((app.cols*app.cellsize + 2*app.margin)/2)
-        cy = int((app.rows*app.cellsize + 2*app.margin)/2)
-        canvas.create_text(cx + 2, cy + 2, text = "game over!", 
-        font = "Arial 20 bold", fill = "red") # drop shadow
-        canvas.create_text(cx, cy, text = "game over!", font = "Arial 20 bold", 
-        fill = "white")
+    canvas.create_rectangle(0, 0, 1440,777, fill = "#3A7B48")
+    if app.currentPage == "homepage":
+        drawHomepage(app, canvas)
+    
+def drawHomepage(app, canvas):
+    canvas.create_text(182, 306, text = "title", 
+    font = "Arial 112 bold", fill = "white")
 
-def drawScore(app, canvas):
-    cx = int((app.cols*app.cellsize + 2*app.margin)/2)
-    textY = int(app.margin/2)
-    canvas.create_text(cx + 1, textY + 1, text = f"Score: {app.score}", 
-    font = "Arial 15 bold", fill = "red") # drop shadow
-    canvas.create_text(cx, textY, text = f"Score: {app.score}", 
-    font = "Arial 15 bold", fill = "pink")
+def mousePressed(app, event):
+    x, y = event.x, event.y
 
-def playTetris():
-    rows, cols, cellsize, margin = gameDimensions()
-    gridWidth = cellsize * cols 
-    gridHeight = cellsize * rows
-    width = gridWidth + 2*margin
-    height = gridHeight + 2*margin
+def display():
+    width = 1440
+    height = 777
     runApp(width=width, height=height)
 
-def drawBoard(app, canvas):
-    removeFullRows(app)
-    for row in range(app.rows):
-        for col in range(app.cols):
-            cellFill = app.board[row][col]
-            drawCell(app, canvas, row, col, cellFill)
-
-def drawCell(app, canvas, row, col, cellFill):
-    boardWidth = app.width - 2*app.margin
-    boardHeight = app.height - 2*app.margin
-    rowWidth = boardHeight // app.rows 
-    colHeight = boardWidth // app.cols 
-    # cell bounds
-    x0 = colHeight*col + app.margin
-    y0 = rowWidth*row + app.margin
-    x1 = colHeight*(col + 1) + app.margin
-    y1 = rowWidth*(row + 1) + app.margin
-    canvas.create_rectangle(x0, y0, x1, y1, fill = cellFill, outline = "red")
-
-def newFallingPiece(app):
-    import random
-    randomIndex = random.randint(0, len(app.tetrisPieces)-1)
-    app.fallingPiece = app.tetrisPieces[randomIndex]
-    app.fallingPieceColor = app.tetrisPieceColors[randomIndex] 
-    app.fallingPieceRow = 0
-    pieceWidth = len(app.fallingPiece[0]) 
-    app.fallingPieceCol = int(app.cols//2) - (int(pieceWidth//2))
-    return None
-
-def drawFallingPiece(app, canvas):
-    cellFill = app.fallingPieceColor
-    for rI in range(len(app.fallingPiece)):
-        for cI in range(len(app.fallingPiece[0])):
-            if app.fallingPiece[rI][cI] == True:
-                row = rI + app.fallingPieceRow # row 0 for now
-                col = cI + app.fallingPieceCol # based on piece
-                drawCell(app, canvas, row, col, cellFill)
-
-def moveFallingPiece(app, drow, dcol):
-    app.fallingPieceRow += drow
-    app.fallingPieceCol += dcol
-    if fallingPieceIsLegal(app, drow, dcol) == False: # the move worked!
-        app.fallingPieceRow -= drow
-        app.fallingPieceCol -= dcol
-        return True
-    return False
-
-def fallingPieceIsLegal(app, drow, dcol):
-    lenPieceRow = len(app.fallingPiece)
-    lenPieceCol = len(app.fallingPiece[0])
-    # check if drow and dcol are in range
-    if drow >= app.rows:
-        return False
-    if dcol >= app.cols:
-        return False
-    # confirm that the cell in the piece is True
-    for row in range(lenPieceRow):
-        for col in range(lenPieceCol):
-            if app.fallingPiece[row][col] == True: # then the cell is true
-                # confirm cell is on the board
-                cellRPosition = app.fallingPieceRow + row
-                cellCPosition = app.fallingPieceCol + col
-                if cellRPosition < 0 or cellRPosition >= app.rows:
-                    return False
-                if cellCPosition < 0 or cellCPosition >= app.cols:
-                    return False
-                # confirms color
-                if app.board[cellRPosition][cellCPosition] != "pink":
-                    return False
-      
-def rotateFallingPiece(app):
-    oldCenterRow = app.fallingPieceRow + len(app.fallingPiece)//2
-    oldCenterCol = app.fallingPieceCol + len(app.fallingPiece[0])//2
-    lenPieceRow = len(app.fallingPiece)
-    lenPieceCol = len(app.fallingPiece[0])
-    # swap dimensions 
-    newPiece = []
-    for i in range(lenPieceCol):
-        newRow = []
-        for j in range(lenPieceRow):
-            newRow.append(None)
-        newPiece.append(newRow)
-    # find new center
-    newRow = oldCenterRow - len(newPiece)//2
-    newCol = oldCenterCol - len(newPiece[0])//2
-    # rotate the piece
-    for row in range(lenPieceCol):
-        fallingPieceCol = lenPieceCol - 1 - row
-        for col in range(lenPieceRow):
-            # get the value from app.fallingPiece
-            fallingPieceColElem = app.fallingPiece[col][fallingPieceCol]
-            newPiece[row][col] = fallingPieceColElem
-    if rotatedPieceIsLegal(app, newPiece, newRow, newCol) != False:
-        app.fallingPiece = newPiece
-        app.fallingPieceRow = newRow
-        app.fallingPieceCol = newCol    
-
-def rotatedPieceIsLegal(app, newPiece, newRow, newCol):
-    lenPieceRow = len(newPiece)
-    lenPieceCol = len(newPiece[0])
-    # confirm that the cell in the piece is True
-    for row in range(lenPieceRow):
-        for col in range(lenPieceCol):
-            if newPiece[row][col] == True: # then the cell is true
-                # confirm cell is on the board
-                cellRPosition = newRow + row
-                cellCPosition = newCol + col
-                if cellRPosition < 0 or cellRPosition >= app.rows:
-                    return False
-                if cellCPosition < 0 or cellCPosition >= app.cols:
-                    return False
-                # confirms color
-                if app.board[cellRPosition][cellCPosition] != "pink":
-                    return False
-
-def removeFullRows(app):
-    newBoard = []
-    newRow = []
-    for i in range(app.cols):
-        newRow.append("pink")
-    removedRowCount = 0
-    for row in app.board:
-        if "pink" not in row:
-            newBoard.append(row)
-            removedRowCount += 1
-    nonEmptyRow = [0] * app.cols
-    for row in newBoard:
-        if row != nonEmptyRow: # we remove the row in app.board
-            print(app.board[-1])
-            app.board.remove(row)
-    for i in range(removedRowCount):
-        app.board.insert(0,newRow)
-        print(app.board[-1])
-    app.score += removedRowCount**2 # update score with square
-
 def main():
-    playTetris()
+    display()
 
 if __name__ == '__main__':
     main()
