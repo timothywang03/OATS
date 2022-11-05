@@ -14,10 +14,10 @@ def redrawAll(app, canvas):
         drawHomepage(app, canvas)
     elif app.currentPage == 'about':
         drawAbout(app, canvas)
-    elif app.currentPage == 'learn':
-        drawLearn(app, canvas)
-    elif app.currentPage == 'start':
-        drawStart(app, canvas)
+    elif app.currentPage == 'learnMore':
+        drawLearnMore(app, canvas)
+    elif app.currentPage == 'webcam':
+        drawWebcam(app, canvas)
 
     
 def drawHomepage(app, canvas):
@@ -28,12 +28,12 @@ def drawAbout(app, canvas):
     canvas.create_text(182, 30, text = "about", 
     font = "Arial 66 bold", fill = "white")
 
-def drawLearn(app, canvas):
-    canvas.create_text(182, 30, text = "learn", 
+def drawLearnMore(app, canvas):
+    canvas.create_text(182, 30, text = "learnMore", 
     font = "Arial 66 bold", fill = "white")
 
-def drawStart(app, canvas):
-    canvas.create_text(182, 30, text = "start", 
+def drawWebcam(app, canvas):
+    canvas.create_text(182, 30, text = "webcam", 
     font = "Arial 66 bold", fill = "white")
 
 def mousePressed(app, event):
@@ -42,14 +42,14 @@ def mousePressed(app, event):
         if (182 <= x <= 310) and (484 <= y <= 538):
             app.currentPage = 'about'
         elif (182 <= x <= 830) and (538 <= y <= 590):
-            app.currentPage = 'learn'
+            app.currentPage = 'learnMore'
         elif (182 <= x <= 378) and (592 <= y <= 650):
-            app.currentPage = 'start'
+            app.currentPage = 'webcam'
     elif app.currentPage == 'about':
         pass
-    elif app.currentPage == 'learn':
+    elif app.currentPage == 'learnMore':
         pass
-    elif app.currentPage == 'start':
+    elif app.currentPage == 'webcam':
         pass
 
 def display():
