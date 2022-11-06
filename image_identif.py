@@ -7,14 +7,14 @@
 from model import MyModel
 from PIL import Image
 
-image = Image.open('/Users/timothywang/Desktop/hack112/image_testing_folder/cardboard.jpg')
-model = MyModel('cnn2.pth', 'cpu')
+waste_types = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
 
 
 def identify(image, model):
     # cnn2.pth model  was already pretrained before importing
     # dataset pulled from Stanford's dataset: https://github.com/garythung/trashnet
     inference, confidence = model.infer(image)
-    return inference, confidence
+    return waste_types[inference], confidence * 1000
+
 
 identify(image, model)
