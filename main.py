@@ -9,6 +9,10 @@ import ui
 from PIL import Image
 
 image = Image.open('/Users/timothywang/Desktop/hack112/image_testing_folder/cardboard.jpg')
+
+# cnn2.pth model  was already pretrained before importing
+# dataset pulled from Stanford's dataset: https://github.com/garythung/trashnet
 model = MyModel('cnn2.pth', 'cpu')
 inference, confidence = model.infer(image)
 print(inference, confidence)
+print(type(inference), type(confidence))
