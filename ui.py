@@ -235,7 +235,7 @@ def mouseMoved(app, event):
             app.aboutUnderline = " underline"
         elif (182 <= x <= 830) and (538 <= y <= 590):
             app.learnMoreUnderline = " underline"
-        elif (182 <= x <= 378) and (592 <= y <= 650):
+        elif (182 <= x <= 455) and (592 <= y <= 650):
             app.webCamUnderline = " underline"
     elif app.currentPage == 'about' or app.currentPage == 'learnMore' or app.currentPage == "webcam" or app.currentPage == 'recycle' or app.currentPage == 'compost' or app.currentPage == 'landfill':
         if (180 <= x <= 366) and (40 <= y <= 90):
@@ -275,14 +275,14 @@ def mousePressed(app, event):
             app.currentPage = 'landfill'
             if (182<=x<=517) and (652<=y<=668):
                 webbrowser.open("hi")
-    elif app.currentPage in ['recycling','compost','landfill']:
+    if app.currentPage == 'recycling':
         if (182<=x<=460) and (434<=y<=449):
             webbrowser.open("https://www.epa.gov/recycle")
-        if app.currentPage == 'recycling':
-            if (182<=x<=460) and (434<=y<=449):
-                webbrowser.open("https://www.epa.gov/recycle")
+    elif app.currentPage == 'landfill':
+        if (182<=x<=515) and (654<=y<=668):
+            webbrowser.open('https://www.epa.gov/landfills')
     if app.currentPage != 'homepage':
-        if (180 <= x <= 366) and (40 <= y <= 90):
+        if (170 <= x <= 250) and (30 <= y <= 140):
             app.currentPage = 'homepage'
 
 
