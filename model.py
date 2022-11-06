@@ -85,8 +85,8 @@ class MyModel:
 
 
 
-    def infer(self, path):
-        img = Image.open(path)
+    def infer(self, img):
+        # takes in an image file in .png, .jpeg, .jpg format
         preprocess =  transforms.Compose([
             transforms.Resize((300, 300)),
             transforms.ToTensor(),
@@ -101,7 +101,6 @@ class MyModel:
 
         #The output has unnormalized scores. To get probabilities, you can run a softmax on it.
         confidence, index = torch.max(output, dim=1)
-        print(index[0].item(), confidence[0].item())
         return (index[0].item(), confidence[0].item())
 
 
