@@ -3,7 +3,7 @@ import math, copy, random
 from cmu_112_graphics import *
 
 def appStarted(app):
-    pages = {"homepage", "about", "learnMore", "webcam", "recycle", 
+    pages = {"homepage", "about", "learnMore", "webcam", "recycle",
     "compost", "landfill"}
     app.currentPage = "homepage"
 
@@ -19,21 +19,21 @@ def redrawAll(app, canvas):
     elif app.currentPage == 'start':
         drawStart(app, canvas)
 
-    
+
 def drawHomepage(app, canvas):
-    canvas.create_text(182, 306, text = "title", 
+    canvas.create_text(182, 306, text = "title",
     font = "Arial 112 bold", fill = "white")
 
 def drawAbout(app, canvas):
-    canvas.create_text(182, 30, text = "about", 
+    canvas.create_text(182, 30, text = "about",
     font = "Arial 66 bold", fill = "white")
 
 def drawLearn(app, canvas):
-    canvas.create_text(182, 30, text = "learn", 
+    canvas.create_text(182, 30, text = "learn",
     font = "Arial 66 bold", fill = "white")
 
 def drawStart(app, canvas):
-    canvas.create_text(182, 30, text = "start", 
+    canvas.create_text(182, 30, text = "start",
     font = "Arial 66 bold", fill = "white")
 
 def mousePressed(app, event):
