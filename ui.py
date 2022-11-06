@@ -250,11 +250,8 @@ def mousePressed(app, event):
             app.currentPage = 'learnMore'
         elif (182 <= x <= 378) and (592 <= y <= 650):
             app.currentPage = 'webcam'
-    elif app.currentPage == 'about':
-        if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage = 'homepage'
-    elif app.currentPage == 'learnMore':
-        if (180 <= x <= 366) and (40 <= y <= 90):
+    elif app.currentPage != 'homepage':
+        if (168 <= x <= 245) and (26 <= y <= 137):
             app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
         camera.takePicture()
