@@ -253,7 +253,6 @@ def mousePressed(app, event):
             app.currentPage = 'recycling'
         else:
             app.currentPage = 'landfill'
-        print(confidence)
 
 
 def ifInsideCircle(x, y):
