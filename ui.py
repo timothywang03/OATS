@@ -247,7 +247,6 @@ def mouseMoved(app, event):
 
 def mousePressed(app, event):
     x, y = event.x, event.y
-    print(x,y)
     if app.currentPage == 'homepage':
         if (182 <= x <= 310) and (484 <= y <= 538):
             app.currentPage = 'about'
@@ -255,7 +254,7 @@ def mousePressed(app, event):
             app.currentPage = 'learnMore'
         elif (182 <= x <= 540) and (592 <= y <= 650):
             app.currentPage = 'webcam'
-    elif app.currentPage != 'homepage':
+    elif app.currentPage == 'learnMore':
         if (168 <= x <= 245) and (26 <= y <= 137):
             app.currentPage = 'homepage'
         elif (183 <= x <= 488) and (560 <= y <= 580):
@@ -283,9 +282,13 @@ def mousePressed(app, event):
     elif app.currentPage == 'landfill':
         if (182<=x<=515) and (654<=y<=668):
             webbrowser.open('https://www.epa.gov/landfills')
+    elif app.currentPage == 'compost':
+        if (182<=x<=350) and (690<=y<=710):
+            webbrowser.open('https://www.nrdc.org/stories/composting-101')
     if app.currentPage != 'homepage':
         if (170 <= x <= 250) and (30 <= y <= 140):
             app.currentPage = 'homepage'
+
 
 
 def ifInsideCircle(x, y):
