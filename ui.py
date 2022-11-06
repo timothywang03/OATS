@@ -79,6 +79,7 @@ def drawWebcam(app, canvas):
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
     canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
+    canvas.create_oval(690, 580, 760, 650, fill = 'white', outline = "white")
 
 def drawRecycle(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
