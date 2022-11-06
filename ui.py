@@ -78,13 +78,13 @@ def drawAbout(app, canvas):
 
     canvas.create_text(182, 450, text = "Authors",
     font = "Inter 16 underline", fill = "white", anchor = "nw")
-    canvas.create_text(182, 470, text = "Suanna Zhong (BXA)",
+    canvas.create_text(182, 470, text = "Orelia Pi (CS)",
     font = "Inter 16", fill = "white", anchor = "nw")
-    canvas.create_text(182, 490, text = "Tim Wang (IS)",
+    canvas.create_text(182, 490, text = "Anna Shi (IS)",
     font = "Inter 16", fill = "white", anchor = "nw")
-    canvas.create_text(182, 510, text = "Orelia Pi (CS)",
+    canvas.create_text(182, 510, text = "Tim Wang (IS)",
     font = "Inter 16", fill = "white", anchor = "nw")
-    canvas.create_text(182, 530, text = "Anna Shi (CS)",
+    canvas.create_text(182, 530, text = "Suanna Zhong (BCSA)",
     font = "Inter 16", fill = "white", anchor = "nw")
     # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
