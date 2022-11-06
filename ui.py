@@ -89,7 +89,6 @@ def drawAbout(app, canvas):
 
 
 def drawLearnMore(app, canvas):
-    canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
     canvas.create_text(181, 259, text="learn more about",
                        font="Inter 80 bold", fill="white", anchor="nw")
     canvas.create_text(181, 356, text="sustainability",
@@ -108,7 +107,9 @@ def drawLearnMore(app, canvas):
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 620, text="read about Pittsburgh’s goals for sustainability here.",
                        font="Inter 16 underline", fill="white", anchor="nw")
-    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
+    from PIL import Image, ImageTk
+    display = ImageTk.PhotoImage(Image.open('learnmoreimage.jpg'))
+    canvas.create_image(930,260, anchor=NW,image=display)
 
 
 def drawWebcam(app, canvas):
