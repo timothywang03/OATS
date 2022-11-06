@@ -5,15 +5,9 @@ import os
 
 def takePicture():
     cam = cv2.VideoCapture(0)
-<<<<<<< Updated upstream
-
-    cv2.namedWindow("test")
-
-=======
     
     cv2.namedWindow("Take a photo of your trash!")
     
->>>>>>> Stashed changes
     img_counter = 0
 
     while True:
@@ -49,13 +43,6 @@ def takePicture():
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
             img_counter += 1
-<<<<<<< Updated upstream
-
-    cam.release()
-
-    cv2.destroyAllWindows()
-=======
     
             cam.release()
             cv2.destroyAllWindows()
->>>>>>> Stashed changes

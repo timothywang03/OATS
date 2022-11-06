@@ -82,26 +82,12 @@ def drawLearnMore(app, canvas):
 
 
 def drawWebcam(app, canvas):
-<<<<<<< Updated upstream
-    canvas.create_text(526, 150, text="start composting!",
-                       font="Inter 45 bold", fill="white", anchor="nw")
-    canvas.create_rectangle(310, 216, 1134, 674, fill="pink", outline="pink")
-    canvas.create_text(689, 681, text="Webcam",
-                       font="Inter 16", fill="white", anchor="nw")
-    # change dimensions of this placeholder if wanted
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
-    canvas.create_oval(690, 580, 760, 650, fill='white', outline="white")
-
-=======
     canvas.create_text(720, 300, text = "switch to the other window", font = "Inter 45 bold", fill = "white")
     canvas.create_text(720, 360, text = "press space to take your photo!", font = "Inter 45 bold", fill = "white")
     canvas.create_text(720, 500, text = "press esc to close the window", font = "Inter 30", fill = "white")
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
     canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
->>>>>>> Stashed changes
 
 def drawRecycle(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
@@ -255,6 +241,8 @@ def display():
     height = 777
     runApp(width=width, height=height)
 
+def main():
+    display()
 
 if __name__ == '__main__':
     main()
