@@ -15,7 +15,6 @@ def appStarted(app):
     app.webCamUnderline = ''
     app.homepageUnderline = ''
 
-
 def redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, 1440, 777, fill="#3A7B48")
     if app.currentPage == "homepage":
@@ -83,6 +82,7 @@ def drawLearnMore(app, canvas):
 
 
 def drawWebcam(app, canvas):
+<<<<<<< Updated upstream
     canvas.create_text(526, 150, text="start composting!",
                        font="Inter 45 bold", fill="white", anchor="nw")
     canvas.create_rectangle(310, 216, 1134, 674, fill="pink", outline="pink")
@@ -94,6 +94,14 @@ def drawWebcam(app, canvas):
                        font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
     canvas.create_oval(690, 580, 760, 650, fill='white', outline="white")
 
+=======
+    canvas.create_text(720, 300, text = "switch to the other window", font = "Inter 45 bold", fill = "white")
+    canvas.create_text(720, 360, text = "press space to take your photo!", font = "Inter 45 bold", fill = "white")
+    canvas.create_text(720, 500, text = "press esc to close the window", font = "Inter 30", fill = "white")
+    # change dimensions of this placeholder if wanted
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
+>>>>>>> Stashed changes
 
 def drawRecycle(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
@@ -162,7 +170,6 @@ def drawCompost(app, canvas):
     canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
     canvas.create_text(185, 25, text="home",
                        font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
-
 
 def drawLandfill(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
@@ -233,8 +240,7 @@ def mousePressed(app, event):
         if (180 <= x <= 366) and (40 <= y <= 90):
             app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
-        if ifInsideCircle(x, y):
-            camera.takePicture()
+        camera.takePicture()
 
 
 def ifInsideCircle(x, y):

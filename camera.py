@@ -1,11 +1,19 @@
 import cv2
+import datetime
+import os
 
 
 def takePicture():
     cam = cv2.VideoCapture(0)
+<<<<<<< Updated upstream
 
     cv2.namedWindow("test")
 
+=======
+    
+    cv2.namedWindow("Take a photo of your trash!")
+    
+>>>>>>> Stashed changes
     img_counter = 0
 
     while True:
@@ -22,11 +30,32 @@ def takePicture():
             break
         elif k % 256 == 32:
             # SPACE pressed
+            ct = datetime.datetime.now()
+            print("current time:-", ct)
+            
+            # dt store timestamp of current date
+            dt = ct.date()
+
+
             img_name = "opencv_frame_{}.png".format(img_counter)
+
+            '''
+            dir_path = os.path.dirname(os.path.realpath(img_name))
+            foldername = f'{dt}-hack112-main'
+            directory = f'{dir_path}\{foldername}'
+            os.chdir(directory)
+            '''
+
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
             img_counter += 1
+<<<<<<< Updated upstream
 
     cam.release()
 
     cv2.destroyAllWindows()
+=======
+    
+            cam.release()
+            cv2.destroyAllWindows()
+>>>>>>> Stashed changes
