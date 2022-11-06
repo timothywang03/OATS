@@ -66,7 +66,7 @@ def drawHomepage(app, canvas):
     canvas.create_text(182, 592,
                        text="try it yourself", font=f"Inter 45 bold{app.webCamUnderline}", anchor="nw")
 
-def drawAbout(app, canvas): 
+def drawAbout(app, canvas):
     canvas.create_text(181, 250, text = "about",
     font = "Inter 80 bold", fill = "white", anchor = "nw")
     canvas.create_text(182, 370, text = "A small project made during the 2022 Hack112 Hackathon that uses a PyTorch machine ",
@@ -267,6 +267,8 @@ def mousePressed(app, event):
         waste_types = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
         wasteType, confidence = image_identif.identify(Image.open('opencv_frame_0.png'))
 
+        app.object = waste_types[wasteType]
+        app.accuracy = f'{round(confidence, 2)}%'
         if waste_types[wasteType] == "cardboard":
             app.currentPage = 'compost'
         elif waste_types[wasteType] in {"glass", "metal", "paper"}:
