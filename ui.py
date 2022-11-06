@@ -82,8 +82,9 @@ def drawLearnMore(app, canvas):
 
 
 def drawWebcam(app, canvas):
-    canvas.create_text(720, 300, text = "switch to the other window", font = "Inter 45 bold", fill = "white")
+    canvas.create_text(720, 300, text = "switch to the pop-up window and", font = "Inter 45 bold", fill = "white")
     canvas.create_text(720, 360, text = "press space to take your photo!", font = "Inter 45 bold", fill = "white")
+    canvas.create_text(720, 450, text = "wait a few seconds for pop-up window", font = "Inter 30", fill = "white")
     canvas.create_text(720, 500, text = "press esc to close the window", font = "Inter 30", fill = "white")
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
