@@ -90,13 +90,23 @@ def drawLearnMore(app, canvas):
 
 
 def drawWebcam(app, canvas):
-    canvas.create_text(720, 300, text = "switch to the pop-up window and", font = "Inter 45 bold", fill = "white")
-    canvas.create_text(720, 360, text = "press space to take your photo!", font = "Inter 45 bold", fill = "white")
-    canvas.create_text(720, 450, text = "wait a few seconds for pop-up window", font = "Inter 30", fill = "white")
-    canvas.create_text(720, 500, text = "press esc to close the window", font = "Inter 30", fill = "white")
+    canvas.create_text(182, 226, text = "let's get sorting!", font = "Inter 80 bold", fill = "white", anchor = "nw")
+    canvas.create_rectangle(310, 216, 1134, 674, fill = "pink", outline = "pink")
+    canvas.create_text(689, 681, text = "Webcam", font = "Inter 16", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
-    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
-    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
+    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+    # numbers
+    canvas.create_text(182, 377, text = "1.", font = "Inter 30 bold", fill = "white", anchor = "nw")
+    canvas.create_text(182, 521, text = "2.", font = "Inter 30 bold", fill = "white", anchor = "nw")
+    canvas.create_text(182, 593, text = "3.", font = "Inter 30 bold", fill = "white", anchor = "nw")
+    # instructions
+    canvas.create_text(222, 377, text = "Click anywhere on the screen to start the ", font = "Inter 30", fill = "white", anchor = "nw")
+    canvas.create_text(222, 413, text = "webcam. It may take a few moments for the ", font = "Inter 30", fill = "white", anchor = "nw")
+    canvas.create_text(222, 449, text = "pop-up window to show up.", font = "Inter 30", fill = "white", anchor = "nw")
+
+    canvas.create_text(222, 521, text = "Press the spacebar key to take a photo.", font = "Inter 30", fill = "white", anchor = "nw")
+
+    canvas.create_text(222, 593, text = "Press the escape key to close the window.", font = "Inter 30", fill = "white", anchor = "nw")
 
 def drawRecycle(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
