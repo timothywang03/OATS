@@ -52,10 +52,10 @@ def drawHomeButton(app, canvas):
 
 def drawHomepage(app, canvas):
     canvas.create_text(182, 306,
-                       text="title",
+                       text="OATS",
                        font="Inter 112 bold", fill="white", anchor="nw")
     canvas.create_text(182, 444,
-                       text="subtitle", font="Inter 30", fill="white", anchor="nw")
+                       text="Open CV AI Trash Sorter", font="Inter 25 italic", fill="white", anchor="nw")
     canvas.create_text(182, 484,
                        text="about",
                        font=f"Inter 45{app.aboutUnderline}", fill="white", anchor="nw")
