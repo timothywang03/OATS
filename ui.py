@@ -133,7 +133,7 @@ def drawRecycle(app, canvas):
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="recycle this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
-    canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
+    canvas.create_text(182, 341, text=f"Accuracy: {app.accuracy}",
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 370, text="Recycling is the process of collecting and processing materials that would otherwise be ",
                        font="Inter 16", fill="white", anchor="nw")
@@ -161,7 +161,7 @@ def drawCompost(app, canvas):
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="compost this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
-    canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
+    canvas.create_text(182, 341, text=f"Accuracy: {app.accuracy}",
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 370, text="Composting is the natural process of recycling organic matter, such as leaves and food",
                        font="Inter 16", fill="white", anchor="nw")
@@ -198,7 +198,7 @@ def drawLandfill(app, canvas):
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="throw this one out.",
                        font="Inter 80 bold", fill="white", anchor="nw")
-    canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
+    canvas.create_text(182, 341, text=f"Accuracy: {app.accuracy}",
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 370, text="The most effective way to reduce waste is to not create it in the first place. Making a new ",
                        font="Inter 16", fill="white", anchor="nw")
