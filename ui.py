@@ -33,7 +33,20 @@ def redrawAll(app, canvas):
         drawRecycle(app, canvas)
     elif app.currentPage == 'landfill':
         drawLandfill(app, canvas)
+    if app.currentPage != "homepage":
+        drawHomeButton(app, canvas)
+    else:
+        drawLogo(app, canvas)
 
+def drawLogo(app, canvas):
+    from PIL import Image, ImageTk
+    display = ImageTk.PhotoImage(Image.open('logo.png'))
+    canvas.create_image(163,150, anchor=NW,image=display)
+
+def drawHomeButton(app, canvas):
+    from PIL import Image, ImageTk
+    display = ImageTk.PhotoImage(Image.open('homebutton.png'))
+    canvas.create_image(168,26, anchor=NW,image=display)
 
 def drawHomepage(app, canvas):
     canvas.create_text(182, 306,
@@ -50,17 +63,27 @@ def drawHomepage(app, canvas):
     canvas.create_text(182, 592,
                        text="start composting", font=f"Inter 45 bold{app.webCamUnderline}", anchor="nw")
 
+def drawAbout(app, canvas): 
+    canvas.create_text(181, 250, text = "about",
+    font = "Inter 80 bold", fill = "white", anchor = "nw")
+    canvas.create_text(182, 370, text = "A small project made during the 2022 Hack112 Hackathon that uses a PyTorch machine ",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    canvas.create_text(182, 390, text = "learning model to categorize a given piece of trash captured by the webcam into either",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    canvas.create_text(182, 410, text = "compost, recycling, or landfill.",
+    font = "Inter 16", fill = "white", anchor = "nw")
 
-def drawAbout(app, canvas):  # create the text for this later!!!!!!!
-    canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
-    canvas.create_text(181, 250, text="about",
-                       font="Inter 80 bold", fill="white", anchor="nw")
-    canvas.create_text(182, 370, text="Sustainability is based on a simple principle: Everything that we need for our survival and well-",
-                       font="Inter 16", fill="white", anchor="nw")
-    # change dimensions of this placeholder if wanted
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
+    canvas.create_text(182, 450, text = "Authors",
+    font = "Inter 16 underline", fill = "white", anchor = "nw")
+    canvas.create_text(182, 470, text = "Suanna Zhong (BXA)",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    canvas.create_text(182, 490, text = "Tim Wang (IS)",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    canvas.create_text(182, 510, text = "Orelia Pi (CS)",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    canvas.create_text(182, 530, text = "Anna Shi (CS)",
+    font = "Inter 16", fill = "white", anchor = "nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 
 def drawLearnMore(app, canvas):
@@ -83,16 +106,12 @@ def drawLearnMore(app, canvas):
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 620, text="read about Pittsburgh’s goals for sustainability here.",
                        font="Inter 16 underline", fill="white", anchor="nw")
-    # change dimensions of this placeholder if wanted
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 
 def drawWebcam(app, canvas):
     canvas.create_text(182, 226, text = "let's get sorting!", font = "Inter 80 bold", fill = "white", anchor = "nw")
-    # change dimensions of this placeholder if wanted
-    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
     # numbers
     canvas.create_text(182, 377, text = "1.", font = "Inter 30 bold", fill = "white", anchor = "nw")
     canvas.create_text(182, 521, text = "2.", font = "Inter 30 bold", fill = "white", anchor = "nw")
@@ -130,10 +149,7 @@ def drawRecycle(app, canvas):
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 570, text="Recycle Source, for further processing.",
                        font="Inter 16", fill="white", anchor="nw")
-    # change dimensions of this placeholder if wanted
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 
 def drawCompost(app, canvas):
@@ -170,9 +186,7 @@ def drawCompost(app, canvas):
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 690, text="Read more at nrdc.org",
                        font="Inter 16 underline", fill="white", anchor="nw")
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 def drawLandfill(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
@@ -204,9 +218,7 @@ def drawLandfill(app, canvas):
                        font="Inter 16", fill="white", anchor="nw")
     canvas.create_text(182, 650, text="Read more at ways to reuce waste at epa.gov",
                        font="Inter 16 underline", fill="white", anchor="nw")
-    canvas.create_rectangle(180, 40, 366, 90, fill="pink", outline="pink")
-    canvas.create_text(185, 25, text="home",
-                       font=f"Inter 66 bold{app.homepageUnderline}", fill="white", anchor="nw")
+    # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 
 def mouseMoved(app, event):
