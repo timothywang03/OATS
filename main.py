@@ -6,3 +6,9 @@
 
 from model import MyModel
 import ui
+from PIL import Image
+
+image = Image.open('/Users/timothywang/Desktop/hack112/image_testing_folder/cardboard.jpg')
+model = MyModel('cnn2.pth', 'cpu')
+inference, confidence = model.infer(image)
+print(inference, confidence)
