@@ -3,7 +3,7 @@ import math, copy, random
 from cmu_112_graphics import *
 
 def appStarted(app):
-    pages = {"homepage", "about", "learnMore", "webcam", "recycle", 
+    pages = {"homepage", "about", "learnMore", "webcam", "recycle",
     "compost", "landfill"}
     app.currentPage = "homepage"
 
@@ -19,6 +19,7 @@ def redrawAll(app, canvas):
     elif app.currentPage == 'webcam':
         drawWebcam(app, canvas)
 
+<<<<<<< HEAD:compost.py
 def drawHomepage(app, canvas):
     canvas.create_text(182, 306,
     text = "title",
@@ -118,6 +119,24 @@ def drawLandfill(app, canvas):
     canvas.create_text(182, 590, text = "and nonprofit organizations may accept a variety of donated items, including used books, ", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 610, text = "working electronics and unneeded furniture.", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 650, text = "Read more at ways to reuce waste at epa.gov", font = "Inter 16 underline", fill = "white", anchor = "nw")
+=======
+
+def drawHomepage(app, canvas):
+    canvas.create_text(182, 306, text = "title",
+    font = "Arial 112 bold", fill = "white")
+
+def drawAbout(app, canvas):
+    canvas.create_text(182, 30, text = "about",
+    font = "Arial 66 bold", fill = "white")
+
+def drawLearn(app, canvas):
+    canvas.create_text(182, 30, text = "learn",
+    font = "Arial 66 bold", fill = "white")
+
+def drawStart(app, canvas):
+    canvas.create_text(182, 30, text = "start",
+    font = "Arial 66 bold", fill = "white")
+>>>>>>> cf3a1bd865bf86929e654c439ded7cca108f1afe:ui.py
 
 def mousePressed(app, event):
     x, y = event.x, event.y
