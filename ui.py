@@ -19,7 +19,6 @@ def redrawAll(app, canvas):
     elif app.currentPage == 'webcam':
         drawWebcam(app, canvas)
 
-<<<<<<< HEAD:compost.py
 def drawHomepage(app, canvas):
     canvas.create_text(182, 306,
     text = "title",
@@ -42,7 +41,7 @@ def drawAbout(app, canvas): # create the text for this later!!!!!!!
     font = "Inter 16", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
-    canvas.create_text(180, 40, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
 
 def drawLearnMore(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
@@ -64,11 +63,17 @@ def drawLearnMore(app, canvas):
     font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 620, text = "read about Pittsburgh’s goals for sustainability here.",
     font = "Inter 16 underline", fill = "white", anchor = "nw")
+    # change dimensions of this placeholder if wanted
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
 
 def drawWebcam(app, canvas):
     canvas.create_text(526, 150, text = "start composting!", font = "Inter 45 bold", fill = "white", anchor = "nw")
     canvas.create_rectangle(310, 216, 1134, 674, fill = "pink", outline = "pink")
     canvas.create_text(689, 681, text = "Webcam", font = "Inter 16", fill = "white", anchor = "nw")
+    # change dimensions of this placeholder if wanted
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
 
 def drawRecycle(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
@@ -83,7 +88,10 @@ def drawRecycle(app, canvas):
     canvas.create_text(182, 530, text = "Code §619.03(a).  The City practices single-stream recycling, which means all recyclables ", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 550, text = "are combined and placed into one truck and taken to a Materials Recovery Facility, ", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 570, text = "Recycle Source, for further processing.", font = "Inter 16", fill = "white", anchor = "nw")
- 
+    # change dimensions of this placeholder if wanted
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+
 def drawCompost(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
     canvas.create_text(182, 226, text = "compost this one!", font = "Inter 80 bold", fill = "white", anchor = "nw")
@@ -119,24 +127,6 @@ def drawLandfill(app, canvas):
     canvas.create_text(182, 590, text = "and nonprofit organizations may accept a variety of donated items, including used books, ", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 610, text = "working electronics and unneeded furniture.", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 650, text = "Read more at ways to reuce waste at epa.gov", font = "Inter 16 underline", fill = "white", anchor = "nw")
-=======
-
-def drawHomepage(app, canvas):
-    canvas.create_text(182, 306, text = "title",
-    font = "Arial 112 bold", fill = "white")
-
-def drawAbout(app, canvas):
-    canvas.create_text(182, 30, text = "about",
-    font = "Arial 66 bold", fill = "white")
-
-def drawLearn(app, canvas):
-    canvas.create_text(182, 30, text = "learn",
-    font = "Arial 66 bold", fill = "white")
-
-def drawStart(app, canvas):
-    canvas.create_text(182, 30, text = "start",
-    font = "Arial 66 bold", fill = "white")
->>>>>>> cf3a1bd865bf86929e654c439ded7cca108f1afe:ui.py
 
 def mousePressed(app, event):
     x, y = event.x, event.y
@@ -149,13 +139,13 @@ def mousePressed(app, event):
             app.currentPage = 'webcam'
     elif app.currentPage == 'about':
         if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage == 'homepage'
+            app.currentPage = 'homepage'
     elif app.currentPage == 'learnMore':
         if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage == 'homepage'
+            app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
         if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage == 'homepage'
+            app.currentPage = 'homepage'
 
 def display():
     width = 1440
