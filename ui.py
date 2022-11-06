@@ -47,7 +47,6 @@ def drawLogo(app, canvas):
     canvas.create_image(163,150, anchor=NW,image=display)
 
 def drawHomeButton(app, canvas):
-    from PIL import Image, ImageTk
     display = ImageTk.PhotoImage(Image.open('homebutton.png'))
     canvas.create_image(168,26, anchor=NW,image=display)
 
@@ -66,7 +65,7 @@ def drawHomepage(app, canvas):
     canvas.create_text(182, 592,
                        text="try it yourself", font=f"Inter 45 bold{app.webCamUnderline}", anchor="nw")
 
-def drawAbout(app, canvas): 
+def drawAbout(app, canvas):
     canvas.create_text(181, 250, text = "about",
     font = "Inter 80 bold", fill = "white", anchor = "nw")
     canvas.create_text(182, 370, text = "A small project made during the 2022 Hack112 Hackathon that uses a PyTorch machine ",
@@ -129,7 +128,8 @@ def drawWebcam(app, canvas):
     canvas.create_text(222, 593, text = "Press the escape key to close the window.", font = "Inter 30", fill = "white", anchor = "nw")
 
 def drawRecycle(app, canvas):
-    canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
+    display = ImageTk.PhotoImage(Image.open('recycle.jpg'))
+    canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="recycle this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
     canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
@@ -156,7 +156,8 @@ def drawRecycle(app, canvas):
 
 
 def drawCompost(app, canvas):
-    canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
+    display = ImageTk.PhotoImage(Image.open('compost.jpg'))
+    canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="compost this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
     canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
@@ -192,7 +193,8 @@ def drawCompost(app, canvas):
     # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 def drawLandfill(app, canvas):
-    canvas.create_rectangle(930, 260, 1270, 600, fill="pink", outline="pink")
+    display = ImageTk.PhotoImage(Image.open('landfill.jpg'))
+    canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="throw this one out.",
                        font="Inter 80 bold", fill="white", anchor="nw")
     canvas.create_text(182, 341, text=f"Object: {app.object}, Accuracy: {app.accuracy}",
@@ -267,6 +269,8 @@ def mousePressed(app, event):
         waste_types = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
         wasteType, confidence = image_identif.identify(Image.open('opencv_frame_0.png'))
 
+        app.object = waste_types[wasteType]
+        app.accuracy = f'{round(confidence, 2)}%'
         if waste_types[wasteType] == "cardboard":
             app.currentPage = 'compost'
         elif waste_types[wasteType] in {"glass", "metal", "paper"}:
