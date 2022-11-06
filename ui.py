@@ -3,6 +3,7 @@ import copy
 import random
 import camera
 import image_identif
+import webbrowser
 
 
 from cmu_112_graphics import *
@@ -243,12 +244,13 @@ def mouseMoved(app, event):
 
 def mousePressed(app, event):
     x, y = event.x, event.y
+    print(x,y)
     if app.currentPage == 'homepage':
         if (182 <= x <= 310) and (484 <= y <= 538):
             app.currentPage = 'about'
         elif (182 <= x <= 830) and (538 <= y <= 590):
             app.currentPage = 'learnMore'
-        elif (182 <= x <= 378) and (592 <= y <= 650):
+        elif (182 <= x <= 540) and (592 <= y <= 650):
             app.currentPage = 'webcam'
     elif app.currentPage == 'about':
         if (180 <= x <= 366) and (40 <= y <= 90):
@@ -256,12 +258,14 @@ def mousePressed(app, event):
     elif app.currentPage == 'learnMore':
         if (180 <= x <= 366) and (40 <= y <= 90):
             app.currentPage = 'homepage'
+        elif (183 <= x <= 488) and (560 <= y <= 580):
+            webbrowser.open("https://www.epa.gov/sustainability/learn-about-sustainability")
+        elif (183 <= x <= 563) and (624 <= y <= 638):
+            webbrowser.open("https://pittsburghpa.gov/dcp/sustainability-resilience")
     elif app.currentPage == 'webcam':
         camera.takePicture()
         waste_types = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
         wasteType, confidence = image_identif.identify(Image.open('opencv_frame_0.png'))
-        app.object = waste_types[wasteType]
-        app.accuracy = f"{round(confidence, 2)}%"
 
         if waste_types[wasteType] == "cardboard":
             app.currentPage = 'compost'
@@ -269,6 +273,17 @@ def mousePressed(app, event):
             app.currentPage = 'recycling'
         else:
             app.currentPage = 'landfill'
+            if (182<=x<=517) and (652<=y<=668):
+                webbrowser.open("hi")
+    elif app.currentPage in ['recycling','compost','landfill']:
+        if (182<=x<=460) and (434<=y<=449):
+            webbrowser.open("https://www.epa.gov/recycle")
+        if app.currentPage == 'recycling':
+            if (182<=x<=460) and (434<=y<=449):
+                webbrowser.open("https://www.epa.gov/recycle")
+    if app.currentPage != 'homepage':
+        if (180 <= x <= 366) and (40 <= y <= 90):
+            app.currentPage = 'homepage'
 
 
 def ifInsideCircle(x, y):
