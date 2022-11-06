@@ -70,7 +70,7 @@ def drawLearnMore(app, canvas):
     font = "Inter 16 underline", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
-    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
 
 def drawWebcam(app, canvas):
     canvas.create_text(526, 150, text = "start composting!", font = "Inter 45 bold", fill = "white", anchor = "nw")
@@ -146,7 +146,7 @@ def mouseMoved(app, event):
             app.learnMoreUnderline = " underline"
         elif (182 <= x <= 378) and (592 <= y <= 650):
             app.webCamUnderline = " underline"
-    elif app.currentPage == 'about' or app.currentPage == "webcam":
+    elif app.currentPage == 'about' or app.currentPage == 'learnMore' or app.currentPage == "webcam":
         if (180 <= x <= 366) and (40 <= y <= 90):
             app.homepageUnderline = " underline"
 
