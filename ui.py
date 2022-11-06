@@ -1,4 +1,5 @@
 import math, copy, random
+import camera
 
 from cmu_112_graphics import *
 
@@ -173,8 +174,14 @@ def mousePressed(app, event):
         if (180 <= x <= 366) and (40 <= y <= 90):
             app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
-        if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage = 'homepage'
+        if ifInsideCircle(x, y):
+            camera.takePicture()
+
+def ifInsideCircle(x, y):
+    # radians is 35 px
+    a = (x-725)**2
+    b = (y-615)**2
+    return (a+b)**0.5 <= 35
 
 def display():
     width = 1440
