@@ -255,11 +255,8 @@ def mousePressed(app, event):
             app.currentPage = 'learnMore'
         elif (182 <= x <= 540) and (592 <= y <= 650):
             app.currentPage = 'webcam'
-    elif app.currentPage == 'about':
-        if (180 <= x <= 366) and (40 <= y <= 90):
-            app.currentPage = 'homepage'
-    elif app.currentPage == 'learnMore':
-        if (180 <= x <= 366) and (40 <= y <= 90):
+    elif app.currentPage != 'homepage':
+        if (168 <= x <= 245) and (26 <= y <= 137):
             app.currentPage = 'homepage'
         elif (183 <= x <= 488) and (560 <= y <= 580):
             webbrowser.open("https://www.epa.gov/sustainability/learn-about-sustainability")
