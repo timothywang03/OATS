@@ -2,6 +2,7 @@ import math
 import copy
 import random
 import camera
+import image_identif
 
 from cmu_112_graphics import *
 
@@ -25,6 +26,14 @@ def redrawAll(app, canvas):
         drawLearnMore(app, canvas)
     elif app.currentPage == 'webcam':
         drawWebcam(app, canvas)
+    '''
+    elif app.currentPage == 'compost':
+        drawCompost(app, canvas)
+    elif app.currentPage == 'recycling'
+        drawRecycling(app, canvas)
+    elif app.currentPage == 'landfill'
+        drawLandfill(app, canvas)
+    '''
 
 
 def drawHomepage(app, canvas):
@@ -228,6 +237,17 @@ def mousePressed(app, event):
             app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
         camera.takePicture()
+        # return waste-types (["cardboard", "glass", "metal", "paper", "plastic", "trash"])
+        # wasteType = image_identif.identify
+        # print(wasteType)
+        '''
+        if wasteType == "cardboard":
+            app.currentPage == 'compost'
+        elif wasteType in {"glass", "metal", "paper"}:
+            app.currentPage == 'recycling'
+        elif wasteType in {"plastic", "trash"}:
+            app.currentPage == 'landfill'
+        '''
 
 
 def ifInsideCircle(x, y):
@@ -235,7 +255,6 @@ def ifInsideCircle(x, y):
     a = (x - 725)**2
     b = (y - 615)**2
     return (a + b)**0.5 <= 35
-
 
 def display():
     width = 1440
