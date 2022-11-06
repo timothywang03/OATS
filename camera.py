@@ -5,12 +5,12 @@ import os
 
 def takePicture():
     cam = cv2.VideoCapture(0)
-    
+
     cv2.namedWindow("Take a photo of your trash!")
-    
+
     img_counter = 0
 
-    while True:
+    while img_counter < 1:
         ret, frame = cam.read()
         if not ret:
             print("failed to grab frame")
@@ -26,7 +26,7 @@ def takePicture():
             # SPACE pressed
             ct = datetime.datetime.now()
             print("current time:-", ct)
-            
+
             # dt store timestamp of current date
             dt = ct.date()
 
@@ -43,6 +43,6 @@ def takePicture():
             cv2.imwrite(img_name, frame)
             print("{} written!".format(img_name))
             img_counter += 1
-    
+
             cam.release()
             cv2.destroyAllWindows()
