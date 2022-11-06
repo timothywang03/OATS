@@ -4,6 +4,7 @@ import random
 import camera
 import image_identif
 
+
 from cmu_112_graphics import *
 
 
@@ -26,14 +27,12 @@ def redrawAll(app, canvas):
         drawLearnMore(app, canvas)
     elif app.currentPage == 'webcam':
         drawWebcam(app, canvas)
-    '''
     elif app.currentPage == 'compost':
         drawCompost(app, canvas)
-    elif app.currentPage == 'recycling'
-        drawRecycling(app, canvas)
-    elif app.currentPage == 'landfill'
+    elif app.currentPage == 'recycling':
+        drawRecycle(app, canvas)
+    elif app.currentPage == 'landfill':
         drawLandfill(app, canvas)
-    '''
 
 
 def drawHomepage(app, canvas):
@@ -92,8 +91,6 @@ def drawLearnMore(app, canvas):
 
 def drawWebcam(app, canvas):
     canvas.create_text(182, 226, text = "let's get sorting!", font = "Inter 80 bold", fill = "white", anchor = "nw")
-    canvas.create_rectangle(310, 216, 1134, 674, fill = "pink", outline = "pink")
-    canvas.create_text(689, 681, text = "Webcam", font = "Inter 16", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
     canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
     # numbers
@@ -247,17 +244,15 @@ def mousePressed(app, event):
             app.currentPage = 'homepage'
     elif app.currentPage == 'webcam':
         camera.takePicture()
-        # return waste-types (["cardboard", "glass", "metal", "paper", "plastic", "trash"])
-        # wasteType = image_identif.identify
-        # print(wasteType)
-        '''
-        if wasteType == "cardboard":
-            app.currentPage == 'compost'
-        elif wasteType in {"glass", "metal", "paper"}:
-            app.currentPage == 'recycling'
-        elif wasteType in {"plastic", "trash"}:
-            app.currentPage == 'landfill'
-        '''
+        waste_types = ["cardboard", "glass", "metal", "paper", "plastic", "trash"]
+        wasteType, confidence = image_identif.identify(Image.open('opencv_frame_0.png'))
+
+        if waste_types[wasteType] == "cardboard":
+            app.currentPage = 'compost'
+        elif waste_types[wasteType] in {"glass", "metal", "paper"}:
+            app.currentPage = 'recycling'
+        else:
+            app.currentPage = 'landfill'
 
 
 def ifInsideCircle(x, y):

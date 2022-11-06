@@ -10,8 +10,5 @@ from PIL import Image
 from image_identif import identify
 import camera
 
-# cnn2.pth model  was already pretrained before importing
-# dataset pulled from Stanford's dataset: https://github.com/garythung/trashnet
-model = MyModel('cnn2.pth', 'cpu')
-
+# wrapper function that combines everything
 display()
