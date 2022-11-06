@@ -11,10 +11,10 @@ sustainable, we effectively strive to create technology for social and
 environmental good.
 
 ## Authors
-- Suanna Zhong (BXA)
-- Tim Wang (IS)
 - Orelia Pi (CS)
 - Anna Shi (IS)
+- Tim Wang (IS)
+- Suanna Zhong (BXA)
 
 ## Requirements
 All these libraries and modules can be downloaded using pip:
