@@ -91,8 +91,6 @@ def drawLearnMore(app, canvas):
 
 def drawWebcam(app, canvas):
     canvas.create_text(182, 226, text = "let's get sorting!", font = "Inter 80 bold", fill = "white", anchor = "nw")
-    canvas.create_rectangle(310, 216, 1134, 674, fill = "pink", outline = "pink")
-    canvas.create_text(689, 681, text = "Webcam", font = "Inter 16", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
     canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
     # numbers
@@ -253,8 +251,10 @@ def mousePressed(app, event):
             app.currentPage = 'compost'
         elif waste_types[wasteType] in {"glass", "metal", "paper"}:
             app.currentPage = 'recycling'
-        else: #waste_types[wasteType] in {"plastic", "trash"}:
+        else:
             app.currentPage = 'landfill'
+        print(confidence)
+
 
 def ifInsideCircle(x, y):
     # radians is 35 px
