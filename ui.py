@@ -95,7 +95,7 @@ def drawRecycle(app, canvas):
     canvas.create_text(182, 570, text = "Recycle Source, for further processing.", font = "Inter 16", fill = "white", anchor = "nw")
     # change dimensions of this placeholder if wanted
     canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
-    canvas.create_text(185, 25, text = "home", font = "Inter 66 bold", fill = "white", anchor = "nw")
+    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
 
 def drawCompost(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
@@ -115,6 +115,9 @@ def drawCompost(app, canvas):
     canvas.create_text(182, 630, text = "organic discards out of the waste stream and produce a valuable soil amendment for your", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 650, text = "own use.", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 690, text = "Read more at nrdc.org", font = "Inter 16 underline", fill = "white", anchor = "nw")
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
+
 
 def drawLandfill(app, canvas):
     canvas.create_rectangle(930, 260, 1270, 600, fill = "pink", outline = "pink")
@@ -132,6 +135,9 @@ def drawLandfill(app, canvas):
     canvas.create_text(182, 590, text = "and nonprofit organizations may accept a variety of donated items, including used books, ", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 610, text = "working electronics and unneeded furniture.", font = "Inter 16", fill = "white", anchor = "nw")
     canvas.create_text(182, 650, text = "Read more at ways to reuce waste at epa.gov", font = "Inter 16 underline", fill = "white", anchor = "nw")
+    canvas.create_rectangle(180, 40, 366, 90, fill = "pink", outline = "pink")
+    canvas.create_text(185, 25, text = "home", font = f"Inter 66 bold{app.homepageUnderline}", fill = "white", anchor = "nw")
+
 
 def mouseMoved(app, event):
     x, y = event.x, event.y
@@ -146,7 +152,7 @@ def mouseMoved(app, event):
             app.learnMoreUnderline = " underline"
         elif (182 <= x <= 378) and (592 <= y <= 650):
             app.webCamUnderline = " underline"
-    elif app.currentPage == 'about' or app.currentPage == 'learnMore' or app.currentPage == "webcam":
+    elif app.currentPage == 'about' or app.currentPage == 'learnMore' or app.currentPage == "webcam" or app.currentPage == 'recycle' or app.currentPage == 'compost' or app.currentPage == 'landfill':
         if (180 <= x <= 366) and (40 <= y <= 90):
             app.homepageUnderline = " underline"
 
