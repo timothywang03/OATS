@@ -1,4 +1,4 @@
-# OATS
+# OATS (OpenCV AI Trash Sorter)
 A small project made during the 2022 Hack112 Hackathon that uses a
 PyTorch machine learning model to categorize a given piece of trash captured
 by the webcam into either compost, recycling, or landfill.
