@@ -43,11 +43,11 @@ def redrawAll(app, canvas):
 
 def drawLogo(app, canvas):
     from PIL import Image, ImageTk
-    display = ImageTk.PhotoImage(Image.open('logo.png'))
+    display = ImageTk.PhotoImage(Image.open('images/logo.png'))
     canvas.create_image(163,150, anchor=NW,image=display)
 
 def drawHomeButton(app, canvas):
-    display = ImageTk.PhotoImage(Image.open('homebutton.png'))
+    display = ImageTk.PhotoImage(Image.open('images/homebutton.png'))
     canvas.create_image(168,26, anchor=NW,image=display)
 
 def drawHomepage(app, canvas):
@@ -108,7 +108,7 @@ def drawLearnMore(app, canvas):
     canvas.create_text(182, 620, text="read about Pittsburgh’s goals for sustainability here.",
                        font="Inter 16 underline", fill="white", anchor="nw")
     from PIL import Image, ImageTk
-    display = ImageTk.PhotoImage(Image.open('learnmoreimage.jpg'))
+    display = ImageTk.PhotoImage(Image.open('images/learnmoreimage.jpg'))
     canvas.create_image(930,260, anchor=NW,image=display)
 
 
@@ -129,7 +129,7 @@ def drawWebcam(app, canvas):
     canvas.create_text(222, 593, text = "Press the escape key to close the window.", font = "Inter 30", fill = "white", anchor = "nw")
 
 def drawRecycle(app, canvas):
-    display = ImageTk.PhotoImage(Image.open('recycle.jpg'))
+    display = ImageTk.PhotoImage(Image.open('images/recycle.jpg'))
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="recycle this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
@@ -157,7 +157,7 @@ def drawRecycle(app, canvas):
 
 
 def drawCompost(app, canvas):
-    display = ImageTk.PhotoImage(Image.open('compost.jpg'))
+    display = ImageTk.PhotoImage(Image.open('images/compost.jpg'))
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="compost this one!",
                        font="Inter 80 bold", fill="white", anchor="nw")
@@ -194,7 +194,7 @@ def drawCompost(app, canvas):
     # canvas.create_rectangle(168, 26, 246, 137, fill = "pink", outline = "pink")
 
 def drawLandfill(app, canvas):
-    display = ImageTk.PhotoImage(Image.open('landfill.jpg'))
+    display = ImageTk.PhotoImage(Image.open('images/landfill.jpg'))
     canvas.create_image(930,260, anchor=NW,image=display)
     canvas.create_text(182, 226, text="throw this one out.",
                        font="Inter 80 bold", fill="white", anchor="nw")
