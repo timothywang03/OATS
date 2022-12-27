@@ -31,6 +31,9 @@ There is no additional installments needed to run this application beyond
 downloading the necessary packages and libraries. To run the application in
 its full form, run main.py.
 
+## Demo
+https://www.youtube.com/watch?v=jsXSy6KTIBw&ab_channel=TimothyWang
+
 ## Machine Learning Process
 Given the dataset provided by Stanford containing 2527 images of assorted
 waste, categorized into glass, paper, cardboard, trash, metal, and plastic, we
